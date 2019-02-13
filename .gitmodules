@@ -1,3 +1,7 @@
 [submodule "submit"]
 	path = submit
 	url = cs164:users/cs164-ace
+[submodule "tools"]
+	path = tools
+	url = cs164:shared
+	branch = software
