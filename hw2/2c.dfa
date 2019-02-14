@@ -1,0 +1,38 @@
+alphabet [01]
+
+start state A
+ [0] -> AB
+ [1] -> A
+state B
+ [0] -> C
+ [1] -> C
+state C
+ [0] -> D
+ [1] -> D
+final state D
+ [0] -> N
+ [1] -> N
+state AB
+ [0] -> ABC
+ [1] -> AC
+state ABC
+ [0] -> ABCD
+ [1] -> ACD
+final state ACD
+ [0] -> ABD
+ [1] -> AD
+final state AD
+ [0] -> AB
+ [1] -> A
+final state ABD
+ [0] -> ABC
+ [1] -> AC
+state AC
+ [0] -> ABD
+ [1] -> AD
+final state ABCD
+ [0] -> ABCD
+ [1] -> ACD
+state N
+ [01] -> N
+

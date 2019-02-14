@@ -1,0 +1,11 @@
+alphabet [01]
+
+start state A
+ [01] -> A
+ [0] -> B
+state B
+ [01] -> C
+state C
+ [01] -> D
+final state D
+
