@@ -1,0 +1,85 @@
+HW #3
+
+1.
+a. Binary string with N "0"s and then N "1"s.
+b. Some operations "+" or "-", and then some "a"s. Every operation consume 2 "a"s.
+c. Some paired round brackets.
+d. A string consisted of N "a"s and N "b"s.
+e. A math expression: `a` means a number, supporting operation "()" and "+", and `S S` means multiply two expression, and allow post-operator "*".
+
+
+2. 
+<!-- a. S ::= 0 S 1 | %Empty -->
+c. S ::= "(" S ")" S | %Empty
+e.
+
+
+3.
+
+- give two distinct leftmost derivations
+
+1) S => aSbS => abSaSbS => abaSbS => ababS => abab
+2) S => aSbS => abS => abaSbS => ababS => abab
+
+- show the corresponding parse tree
+
+![](https://s.gjw.moe/res/164.jpg)
+
+- the rightmost derivation
+
+1) S => aSbS => aSb => abSaSb => abSab => abab
+2) S => aSbS => aSbaSbS => aSbaSb => aSbab => abab
+
+4.
+
+- Prove
+
+"11" is 3, and it's divisible by 3.
+
+"1001" is 9, and it's indeed divisible by 3.
+
+If N is divisible by 3, then 2N is also divisible by 3. So `N ::= N0` doesn't break the feature.
+
+If M,N is divisible by 3, then numeric "M + N" is also divisible by 3, then numeric "M * 2^k + N" is also divisible by 3. 
+Then binary form string concentrate `"M" + "N"` is also divisible by 3. (For example, `"11" + "11"` => "1100+11")
+
+- Does this grammar generate all positive binary numerals that are divisible by 3?
+
+No.
+
+I tried to figure out all possible situation to prove it's right. However, I'm sad that it's not.
+21 = 3*7, which has binary form "10101". It's a obvious ounterexample.
+
+5.
+a.
+
+(regular)
+S ::= 1 S | 0 1 S | empty
+
+b.
+
+S ::= 0 S 1 S | 1 S 0 S | empty
+
+c.
+
+S ::= 0 A | 1 A 
+A ::= 0 A 1 A | 1 A 0 A | empty
+
+d.
+
+(regular)
+S ::= 0 A | 1 S | empty
+A ::= 0 A | 1 WARN | empty
+WARN ::= 0 A | empty
+
+e.
+
+AnyThing ::= 0 | 1
+A ::= AnyThing A AnyThing | 0
+B ::= AnyThing B AnyThing | 1
+S ::= A B | B A
+
+f.
+
+(.*){2}
+

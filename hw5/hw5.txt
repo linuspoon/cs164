@@ -1,0 +1,115 @@
+HW #5 solutions
+
+1.
+
+emmm do you mean a simple downcasting example?
+
+```
+Object obj;
+String str = (String) obj; // Now java has to do type-valicate on runtime. The complexity is explained below.
+```
+
+If I'm downcasting from typeA to typeB, and assume we have the following inherite tree:
+
+Object
+ |
+CommonClass1
+ |
+CommonClass2
+ |
+...
+ |
+CommonClassP
+ |    \
+class1 classB1
+ |      \
+class2 classB2
+ |       |
+...     ...
+ |       |
+classM classBN
+ |       |
+typeA   typeB
+
+Then the time complexity to do a downcasting is O(M+P+N+P). It's the same as problem "Looking for the first common node of two linked-list".
+
+2.
+
+```
+#!/usr/bin/python3
+# This program always print `static`, because python doesn't use dynamic scoping at all!!!
+
+def fuck():
+  a = 'static'
+  def shit():
+    print(a)
+  
+  def fuck2():
+    a = 'dynamic' # There's even a warning by pylint here...
+    shit()
+  
+  shit()
+
+fuck()
+```
+
+3.
+
+All the equations are listed here:
+
+'Y : f -> 'a1
+'f : 'a2 -> 'a3
+'a2 : 'a1
+'a1 : 'a3
+
+'g : 'h -> 'a11
+'a11 : 'x -> 'a12
+'a12 : int
+'x : int
+'h : int -> int
+
+'fact : 'x -> 'a20
+'Y : 'g -> 'a21
+'a21 : 'x -> 'a22
+'a22 : 'a20
+
+---------------------------------
+
+Then we just do calculations:
+
+'a1 = 'a2 = 'a3
+'f = 'a1 -> 'a1
+'Y = ('a1 -> 'a1) -> 'a1
+
+.
+
+=> 'x = int
+=> 'h = int -> int
+
+'a12 = int
+'a11 = int -> int
+=> 'g = (int -> int) -> (int -> int)
+
+.
+
+'a21 = int -> 'a22 = int -> 'a20
+'Y = 'g -> (int -> 'a20)
+   = ((int -> int) -> (int -> int)) -> (int -> 'a20)
+'fact = int -> 'a20
+Because 'Y = ('a1 -> 'a1) -> 'a1, let's unify it, so
+=> 'a1 = int -> int
+=> 'Y = ((int -> int) -> int -> int) -> int -> int
+and 'a20 = int
+=> 'fact = int -> int
+
+------------------------------
+
+Answer:
+
+=> 'g = (int -> int) -> (int -> int)
+=> 'Y = ((int -> int) -> int -> int) -> int -> int
+=> 'fact = int -> int
+
+
+
+

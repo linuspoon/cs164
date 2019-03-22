@@ -1,0 +1,23 @@
+# Example of input for scoper.py
+# See sample output in eg.out
+
+x = ;
+y = x;
+x = x y;
+class T {
+   x = ;
+   def p {
+      a = x;
+   }
+   b = x;
+}
+
+def f {
+   x::T = y;
+   def g {
+       a = y;
+   }
+   y = x;
+   x::T = ;
+   x = x y;
+}
