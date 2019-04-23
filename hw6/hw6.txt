@@ -1,0 +1,105 @@
+HW #6 Solutions
+
+1.  C Program:
+
+//arg begin, size
+//
+//using zero = 0
+//sum = counter = 0
+//
+//do {
+//    sum += *(begin + 4 * counter)
+//    ++counter
+//} while(counter < size);
+//
+//return sum
+//
+
+int32_t f(int32_t *begin, int32_t size) {
+    const int32_t zero = 0;
+    int32_t sum = zero;
+
+    for(int32_t counter = zero; counter < size; ++counter) {
+        sum += begin[counter];
+    }
+
+    return sum;
+}
+
+
+
+2. RISC V Code:
+
+lw a1, 0(ti)
+lw a2, 4(d)
+mul a0, a1, a2
+lw a1, 0(tj)
+lw a2, 8(d)
+mul a1, a1, a2
+add a0, a0, a1
+
+lw a0, 0(d)
+add a1, a1, a0
+lw a0, 0(a1)
+; now register a0 contains `A[i,j]`
+
+
+3
+  a.
+(V0+j*S2, S1)
+
+  b.
+(V0, S2, S1)
+
+  c.
+(V0+N*S1+M*S2, -S1, -S2)
+
+5.
+  a.
+
+
+  b-d. [Just show the final result.  Here is the original, if you want to 
+        use it (please erase it if you don't).]
+
+Entry:
+  i := 0             #1
+  goto L6	     #2
+L1:
+  j := 0	     #3
+  goto L5      	     #4
+L2:
+  k := 0	     #5
+  goto L4	     #6
+L3:
+  t1 := 4 * n	     #7
+  t2 := t1 * i	     #8
+  t3 := 4 * j	     #9
+  t4 := t2 + t3	     #10
+  t5 := *(t4 + c)    #11
+  t6 := 4 * n	     #12
+  t7 := t6 * i	     #13
+  t8 := 4 * k	     #14
+  t9 := t7 + t8	     #15
+  t10 := *(t9 + a)   #16
+  t11 := 4 * n	     #17
+  t12 := t11 * k     #18
+  t13 := 4 * j	     #19
+  t14 := t12 + t13   #20
+  t15 := *(t14 + b)  #21
+  t16 := t10 * t15   #22
+  t17 := t5 + t16    #23
+  t18 := 4 * n	     #24
+  t19 := t18 * i     #25
+  t20 := 4 * j	     #26
+  t21 := t19 + t20   #27
+  *(t21+c) := t17    #28
+  k := k + 1	     #29
+L4:
+  if k < n: goto L3  #30
+  j := j + 1	     #31
+L5:
+  if j < n: goto L2  #32
+  i := i + 1	     #33
+L6:
+  if i < n: goto L1  #34
+Exit:
