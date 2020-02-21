@@ -20,3 +20,10 @@ Host cs164
     IdentityFile ~/keys/cs164.privkey
 ```
 
+## Also refer to
+
+https://git.recolic.net/root/cs164_lab2
+
+https://git.recolic.net/root/cs164_lab3
+
+https://git.recolic.net/root/cs164_lab3_cg
